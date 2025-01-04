@@ -1,0 +1,47 @@
+name: Update Image Flow
+run-name: "Update Image Service ${{ github.event.inputs.repository }} (${{ github.event.inputs.env }})"
+
+on:
+  workflow_dispatch:
+    inputs:
+      image:
+        required: true
+        type: string
+      repository:
+        required: true
+        type: string
+      env:
+        required: true
+        type: string
+      message:
+        required: true
+        type: string
+        default: "Update kustomize files"
+
+jobs:
+  deploy:
+    name: Deploy to ${{ github.event.inputs.env }} env
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v2
+      - name: Setup Kustomize
+        uses: imranismail/setup-kustomize@v1
+        with:
+          kustomize-version: "3.6.1"
+      - name: Update Kubernetes resources
+        run: |
+          cd ${{ github.event.inputs.repository }}/overlays/${{ github.event.inputs.env }}
+          kustomize edit set image ${{ github.event.inputs.image }}
+          kustomize build
+          cat kustomization.yaml
+      - name: Commit files
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add -A
+          git commit -m "${{ github.event.inputs.message }}"
+          git remote set-url origin https://oauth2:${{ secrets.GITHUB_TOKEN }}@github.com/huydq189/example-gitops.git
+          git pull origin main --rebase
+          git push origin main
