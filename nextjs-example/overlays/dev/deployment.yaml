@@ -17,4 +17,7 @@ spec:
         - name: nextjs-example
           image: asia-east1-docker.pkg.dev/ecom-lab/gcf-artifacts/dev/nextjs-example:0.0.0
           ports:
+            - port: 3000
             - containerPort: 3000
+      imagePullSecrets:
+        - name: gcp-artifact-registry
