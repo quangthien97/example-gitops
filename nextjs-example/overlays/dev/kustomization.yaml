@@ -7,3 +7,4 @@ resources:
 - ./../../base
 images:
 - name: asia-east1-docker.pkg.dev/ecom-lab/gcf-artifacts/dev/nextjs-example
+  newTag: edd545b64eee49e9445ae2ff27cef2c56ccd661c
