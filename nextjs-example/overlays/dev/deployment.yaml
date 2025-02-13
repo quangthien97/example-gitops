@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: nextjs-example
-          image: asia-east1-docker.pkg.dev/ecom-lab/gcf-artifacts/dev/nextjs-example:0.0.0
+          image: asia-east1-docker.pkg.dev/direct-mission-449804-a7/trietmapdit/dev/nextjs-example:0.0.0
           ports:
             - containerPort: 3000
       imagePullSecrets:
