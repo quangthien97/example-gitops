@@ -42,6 +42,6 @@ jobs:
           git config --local user.name "GitHub Action"
           git add -A
           git commit -m "${{ github.event.inputs.message }}"
-          git remote set-url origin https://oauth2:${{ secrets.GITHUB_TOKEN }}@github.com/huydq189/example-gitops.git
+          git remote set-url origin https://oauth2:${{ secrets.GITHUB_TOKEN }}@github.com/quangthien97/example-gitops.git
           git pull origin main --rebase
           git push origin main

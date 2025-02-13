@@ -6,5 +6,5 @@ resources:
 - deployment.yaml
 - ./../../base
 images:
-- name: asia-east1-docker.pkg.dev/ecom-lab/gcf-artifacts/dev/nextjs-example
+- name: asia-east1-docker.pkg.dev/direct-mission-449804-a7/trietmapdit/dev/nextjs-example
   newTag: 5f2605747b888dc2c7de4f60662c06a95f0c4ec1
